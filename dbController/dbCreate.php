@@ -1,11 +1,5 @@
 <?php
-$dsn = 'mysql:host=db;dbname=mytest;charset=utf8mb4';
-$db_user = 'mytest';
-$db_pass = 'yourPassword';
-$driver_options = [
-    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
-    PDO::ATTR_EMULATE_PREPARES => false,
-];
+require('dbSetting.php');
 
 try {
     $pdo = new PDO($dsn, $db_user, $db_pass);
