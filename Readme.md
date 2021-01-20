@@ -1,7 +1,6 @@
-# データベース操作用PHP
+# Forest of Lamp DB開発環境
 
-
-## 種類
+## dbController種類
 
 ### dbCreate.php
 データベースの作成と初期化
@@ -21,8 +20,6 @@
 ## 使い方
 1. dbSetting.phpにいろいろ設定項目を書く
 2. ブラウザからアクセス
-
-
 
 ## color-change-api.php
 今回のAPI
