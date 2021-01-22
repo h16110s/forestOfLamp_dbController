@@ -1,5 +1,7 @@
 <?php
-$RADIO_BUTTON_NUM = 54;
+$RADIO_BUTTON_ROW = 8;
+$RADIO_BUTTON_COL = 10;
+$RADIO_BUTTON_NUM = $RADIO_BUTTON_COL * $RADIO_BUTTON_ROW;
 $Debug = false;
 if ($_GET["D"] === '1000'){
     $Debug = true;
@@ -11,7 +13,7 @@ if ($_GET["D"] === '1000'){
   <head>
     <!-- Required meta tags -->
     <meta charset="utf-8">
-    <meta name="viewport" content="width=700px, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=800px, initial-scale=1, shrink-to-fit=no">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
@@ -68,7 +70,7 @@ if ($_GET["D"] === '1000'){
           font-family: 'Helvetica Neue','Helvetica','Arial',sans-serif;
       }
       body{
-          max-width:700px;
+          max-width:800px;
           text-align: center;
       }
       .custom-radio-button{
@@ -108,17 +110,27 @@ if ($_GET["D"] === '1000'){
     </div>
     <div class="container-fluid mt-5" name="cform">
         <div class="row justify-content-center">
-            <?php for($i = 0; $i < 5; $i++):?>
-                <div class = "col-12 text-center">
-                    <?php for($j = 0; $j < 9 ; $j++):?>
-                        <div class="form-check-inline m-4">
+            <?php for($i = 0; $i < $RADIO_BUTTON_ROW; $i++):?>
+                <?php if($i % 2 == 0):?>
+                <div class = "col-12 text-center ml-4">
+                    <?php for($j = 0; $j < $RADIO_BUTTON_COL ; $j++):?>
+                        <div class="form-check-inline mx-4 my-3">
                             <input class="form-check-input custom-radio-button" type="radio" name="radio" id=<?php echo $i?> value="<?php echo $i?>">
                         </div>
                     <?php endfor?>
                 </div>
+                <?php else: ?>
+                <div class = "col-12 text-center mr-4">
+                    <?php for($j = 0; $j < $RADIO_BUTTON_COL ; $j++):?>
+                        <div class="form-check-inline mx-4 my-3">
+                            <input class="form-check-input custom-radio-button" type="radio" name="radio" id=<?php echo $i?> value="<?php echo $i?>">
+                        </div>
+                    <?php endfor?>
+                </div>
+                <?php endif ?>
             <?php endfor?>
             <div class="col-7 col-md-5 mt-5 text-center">
-                <button class="btn btn-danger w-100 py-5" onclick="postForm()" onsubmit="return false;">参加する</button>
+                <button class="btn btn-danger w-100 py-3" onclick="postForm()" onsubmit="return false;">参加する</button>
             </div>
         </div>
     </div>
