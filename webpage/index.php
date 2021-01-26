@@ -32,15 +32,10 @@ if ($_GET["D"] === '1000'){
                 // i番目のラジオボタンがチェックされているかを判定
                 if(document.getElementsByName('radio')[i].checked){ 
                     flag = true;
-                    // alert(document.getElementsByName('radio')[i].value + "が選択されました。");
                     return i+1;
                 }
             }
         
-            // 何も選択されていない場合の処理
-            // if(!flag){ 
-            //     // alert("項目が選択されていません。");
-            // }
             return -1;
         }
         function postForm() {
