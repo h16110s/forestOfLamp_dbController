@@ -5,12 +5,12 @@ try {
     $pdo = new PDO($dsn, $db_user, $db_pass);
     // テーブル作成のSQLを作成
     $sql = 'CREATE TABLE pm (
-        id INT(11) not null AUTO_INCREMENT PRIMARY KEY,
-        blue INT(11) not null ,
-        red INT(11) not null ,
-        green INT(11) not null,
-        updated_at DATETIME
-    ) engine=innodb default charset=utf8';
+        id SERIAL NOT NULL,
+        blue integer NOT NULL ,
+        red integer NOT NULL ,
+        green integer NOT NULL,
+        updated_at timestamp
+    )';
 
     // SQLを実行
     $res = $pdo->query($sql);

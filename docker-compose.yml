@@ -2,24 +2,23 @@ version: '3'
 services:
   db:
     tty: true
-    image: mysql:5.7
+    image: postgres:12.5
     container_name: db
-    command: mysqld --default-authentication-plugin=mysql_native_password
-    ports:
-        - "4306:3306"
-    environment: 
-      MYSQL_DATABASE: mytest
-      MYSQL_USER: mytest
-      MYSQL_PASSWORD: yourPassword
-      MYSQL_ROOT_PASSWORD: DGJLWwjHXDeBtn2uXKqU
+    ports: 
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: mytest
+      POSTGRES_PASSWORD: yourPassword
+      PGPASSWORD: yourPassword
+      POSTGRES_DB: mytest
 
   dbc:
     build: ./
     container_name: dbc
     ports: 
       - "8080:80"
-    volumes: 
-      - ./dbController:/var/www/html
+    # volumes: 
+      # - ./dbController:/var/www/html
 
   web:
     image: php:7.1-apache

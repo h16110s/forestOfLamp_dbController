@@ -1,7 +1,3 @@
-<header>
-    <meta Access-Control-Allow-Origin='*' />
-</header>
-
 <?php
 
 function setColor($id, $red, $green, $blue){

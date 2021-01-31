@@ -1,8 +1,8 @@
 <?php
-$dsn = 'mysql:host=XXXXXX;dbname=mytest;charset=utf8mb4';
-$db_user = 'XXXXXXX';
-$db_pass = 'XXXXXX';
-$db_table_name = 'XXXXX';
+$url = parse_url(getenv('DATABASE_URL'));
+$dsn = sprintf('pgsql:host=%s;dbname=%s', $url['host'], substr($url['path'], 1));
+$db_user = $url['user'];
+$db_pass = $url['pass'];
 $driver_options = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
     PDO::ATTR_EMULATE_PREPARES => false,

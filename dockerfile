@@ -5,7 +5,13 @@ ENV TZ=Asia/Tokyo
 RUN mv /etc/apache2/mods-available/headers.load /etc/apache2/mods-enabled  \
     && /bin/sh -c a2enmod headers
 
-COPY ./apache2.conf /etc/apache2/apache2.conf
+RUN apt -y update && \
+    apt -y install \
+        libpq-dev && \
+    docker-php-ext-install pdo_pgsql
 
-RUN apt update && \
-    docker-php-ext-install mysqli pdo_mysql
+COPY --chown=www-data:www-data ./dbController/color-change-api.php /var/www/html/
+COPY --chown=www-data:www-data ./dbController/dbSetting.php /var/www/html/
+COPY --chown=www-data:www-data ./dbController/dbCreate.php /var/www/html/
+
+EXPOSE 80
