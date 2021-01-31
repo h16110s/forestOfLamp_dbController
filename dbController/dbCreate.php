@@ -17,7 +17,7 @@ try {
 
     $date = date('Y-m-d H:i:s');
     
-    for($i = 0; $i < 50; $i++){
+    for($i = 0; $i < 100; $i++){
         $sql = "INSERT INTO pm (blue,red,green,updated_at) VALUES (0,0,0,'$date')";
         $res = $pdo->query($sql);
     }
